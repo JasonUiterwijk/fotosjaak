@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: localhost
--- Genereertijd: 22 nov 2013 om 09:58
+-- Genereertijd: 28 nov 2013 om 14:32
 -- Serverversie: 5.6.12-log
 -- PHP-versie: 5.4.12
 
@@ -21,6 +21,43 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `am1b-fotosjaak` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `am1b-fotosjaak`;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `login`
+--
+
+CREATE TABLE IF NOT EXISTS `login` (
+  `login_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(12) NOT NULL,
+  `userrole` enum('customer','administrator','root','photographer','developer') NOT NULL DEFAULT 'customer',
+  `isactivated` enum('yes','no') NOT NULL DEFAULT 'no',
+  `registerdate` datetime NOT NULL,
+  PRIMARY KEY (`login_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` int(10) unsigned NOT NULL,
+  `firstname` varchar(200) NOT NULL,
+  `infix` varchar(20) NOT NULL,
+  `surname` varchar(300) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `addresnumber` varchar(12) NOT NULL,
+  `city` varchar(300) NOT NULL,
+  `zipcode` varchar(6) NOT NULL,
+  `country` varchar(300) NOT NULL,
+  `phonenumber` varchar(10) NOT NULL,
+  `mobilephonenumber` varchar(10) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
